@@ -39,6 +39,15 @@ router.delete('/:id',(req,res)=>{
   });
 });
 router.get('/',(req,res)=>{
-
+Ad.sequelize.query('select ads.id,ads.Date,ads.Title,ads.Content,ads.Picture,ads.Status,subcategories.Name as Subcategory,categories.Name as Category,users.Name as User from ads join categories on ads.Category=categories.id join subcategories on ads.Subcategory=subcategories.id join users on ads.Userid=users.id',{type:Ad.sequelize.QueryTypes.SELECT}).then(result=>{
+  res.status(200).json({
+    result
+  });
+}).catch(err=>{
+  res.status(403).json({
+    message:'Error',
+    error:err
+  });
+});
 });
 module.exports=router;
