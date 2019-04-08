@@ -2,6 +2,9 @@ const express=require('express');
 const bodyParser=require('body-parser');
 const PORT=process.env.PORT||8080;
 const admin=require('./router/Adminfunctions');
+const category=require('./router/Categoryfunctions');
+const subcategory=require('./router/Subcategoryfunctions');
+const ads=require('./router/Adfunctions');
 const app=express();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -19,6 +22,9 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/admin',admin);
+app.use('/category',category);
+app.use('/subcategory',subcategory);
+app.use('/ad',ads);
 app.listen(PORT,()=>{
   console.log('server started on '+PORT);
 });
