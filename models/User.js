@@ -1,5 +1,5 @@
 const sequelize=require('sequelize');
-const db=require('../config/database');
+const db=require('../configuration/database');
 const User=db.define('users',{
   id:{type:sequelize.INTEGER,primaryKey:true,autoIncrement:true},
   Email:{type:sequelize.STRING},

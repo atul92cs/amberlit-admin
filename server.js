@@ -5,6 +5,7 @@ const admin=require('./router/Adminfunctions');
 const category=require('./router/Categoryfunctions');
 const subcategory=require('./router/Subcategoryfunctions');
 const ads=require('./router/Adfunctions');
+const user=require('./router/Userfunctions');
 const app=express();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -25,6 +26,7 @@ app.use('/admin',admin);
 app.use('/category',category);
 app.use('/subcategory',subcategory);
 app.use('/ad',ads);
+app.use('/user',user);
 app.listen(PORT,()=>{
   console.log('server started on '+PORT);
 });
