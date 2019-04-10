@@ -19,6 +19,19 @@ router.post('/add',(req,res)=>{
      });
    });
 });
+router.get('/:id',(req,res)=>{
+  const id=req.params.id;
+  Subcategory.sequelize.query('select subcategories.id,subcategories.Name,categories.id as Categoryid,categories.Name as Category from subcategories join categories on subcategories.Categoryid=categories.id where subcategories.id = ?',{replacements:[id],type:Subcategory.sequelize.QueryTypes.SELECT}).then(result=>{
+    res.status(200).json({
+      result
+    });
+  }).catch(err=>{
+    res.status(403).json({
+      message:'Error occured',
+      Error:err
+    });
+  });
+});
 router.get('/',(req,res)=>{
 Subcategory.sequelize.query('select subcategories.id,subcategories.Name,categories.id as Categoryid,categories.Name as Category from subcategories join categories on subcategories.Categoryid=categories.id',{type:Subcategory.sequelize.QueryTypes.SELECT})
 .then(result=>{

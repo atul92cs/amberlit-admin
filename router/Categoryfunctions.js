@@ -16,7 +16,19 @@ router.post('/add',(req,res)=>{
     });
   });
 });
-
+router.get('/:id',(req,res)=>{
+  const id=req.params.id;
+  Category.findOne({where:{id}}).then(result=>{
+    res.status(200).json({
+      result
+    });
+  }).catch(err=>{
+    res.status(403).json({
+      message:'Error occured',
+      error:err
+    });
+  });
+});
 router.put('/:id',(req,res)=>{
   const id=req.params.id;
   const Name=req.body.name;
