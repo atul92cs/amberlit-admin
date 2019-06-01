@@ -6,6 +6,7 @@ const category=require('./router/Categoryfunctions');
 const subcategory=require('./router/Subcategoryfunctions');
 const ads=require('./router/Adfunctions');
 const user=require('./router/Userfunctions');
+const location=require('./router/Locationfunctions');
 const app=express();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 app.use('/admin',admin);
 app.use('/category',category);
 app.use('/subcategory',subcategory);
+app.use('/location',location);
 app.use('/ad',ads);
 app.use('/user',user);
 app.listen(PORT,()=>{
