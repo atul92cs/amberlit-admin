@@ -23,7 +23,7 @@ app.use(bodyParser.json());
   );
   next();
 });*/
-app.use('/',express.static(path.join(__dirname,'client')));
+app.use('/',express.static(path.join(__dirname,'view')));
 app.use('/admin',admin);
 app.use('/category',category);
 app.use('/subcategory',subcategory);
@@ -31,7 +31,7 @@ app.use('/location',location);
 app.use('/ad',ads);
 app.use('/user',user);
 app.use((req,res,next)=>{
-  res.sendFile(path.join('client','index.html'));
+  res.sendFile(path.join('view','index.html'));
 });
 app.listen(PORT,()=>{
   console.log('server started on '+PORT);
