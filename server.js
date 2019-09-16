@@ -31,7 +31,7 @@ app.use('/location',location);
 app.use('/ad',ads);
 app.use('/user',user);
 app.use((req,res,next)=>{
-  res.sendFile(path.join(__dirname,'index.html'));
+  res.sendFile(path.join(__dirname,'client','index.html'));
 });
 app.listen(PORT,()=>{
   console.log('server started on '+PORT);
